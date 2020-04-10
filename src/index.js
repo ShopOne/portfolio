@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Heads from './header.js'
-import './default.css'
+import MainContent from './content.js'
+
 ReactDOM.render(
-  <Heads />,
+  <div className="body">
+  <Heads/>
+  <MainContent/>
+  </div>,
   document.getElementById('root')
 );

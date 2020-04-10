@@ -1,0 +1,27 @@
+.skill{
+  background: #CCCCCC;
+  width: 220px;
+  border: 4px solid #AADDFF;
+  margin: 5px;
+}
+li{
+  list-style: none;
+}
+.skill-image{
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+.skill-name{
+  float: left;
+  font-size: 20pt;
+  margin-top: 25pt;
+  margin-left: 20px;
+}
+.skill:after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
