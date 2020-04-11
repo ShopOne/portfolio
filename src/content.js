@@ -1,5 +1,4 @@
 import React from 'react';
-import './content.css'
 const skills =[
   {img: process.env.PUBLIC_URL+"/cpp.png",skillName:"C++",
    skillDesc: "競技プログラミングとゲーム制作に使用しています。"},
@@ -10,6 +9,14 @@ const skills =[
    {img: process.env.PUBLIC_URL+"/droid.png", skillName: "Android",
      skillDesc: "アプリを1つリリースしています"},
 ]
+
+class Biography extends React.Component{
+  render(){
+    return(
+      <h1 id="introduction"> 自己紹介 </h1>
+    )
+  }
+}
 
 class Skills extends React.Component{
   render(){
@@ -33,10 +40,41 @@ class Skills extends React.Component{
   }
 }
 class Profile extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      selected: "Skill",
+    }
+    this.onClickedHandler = this.onClickedHandler.bind(this);
+  }
+  onClickedHandler(e){
+    const clicked = e.target.value;
+    this.setState({
+      selected: clicked,
+    })
+  }
   render(){
+    var componentChanger = () => {
+      switch(this.state.selected){
+        case "Skill": 
+          return(<Skills />);
+        case "Biography":
+          return(<Biography />);
+        default: break;
+      }
+    }
     return(
       <div className="Profile">
-        <Skills/>
+      <div id="selector">
+        <button type="text" 
+        value="Skill"
+        onClick = {this.onClickedHandler}
+        className ="profile-button">スキル</button>
+      <button type="text"
+      value="Biography"
+      onClick = {this.onClickedHandler}>プロフィール</button>
+      </div>
+      {componentChanger()}
       </div>
     )
   }

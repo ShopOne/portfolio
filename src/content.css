@@ -6,6 +6,21 @@
   min-height: 100px;
   min-width: 1000px;
   max-width: 1000px;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+.skill:hover{
+  background: black;
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0.2;
+    transform: translate(0px,30px);
+  }
+  100%{
+    opacity: 1.0;
+    transform: translate(0px,0px);
+  }
 }
 li{
   list-style: none;
@@ -34,5 +49,6 @@ li{
   clear: both;
   visibility: hidden;
 }
-#Android{
+#introduction{
+  text-align: center;
 }

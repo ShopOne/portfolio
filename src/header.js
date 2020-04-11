@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.css'
+import './content.css'
 export default class Heads extends React.Component{
   render(){
     return(
