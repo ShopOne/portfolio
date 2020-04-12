@@ -52,3 +52,9 @@ li{
 #introduction{
   text-align: center;
 }
+#left-bio{
+  float: left;
+}
+#right-bio{
+  float: left;
+}
