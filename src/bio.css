@@ -1,0 +1,63 @@
+#bio{
+  min-width: 500px;
+  width: 700px;
+  margin-top: 40px; 
+  margin-left: 40px;
+}
+#bio:after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bio-box{
+  width: 200px;
+  margin-bottom: 30px;
+}
+.bio-box:after{
+  content: "";
+  display: inline-block;
+  width: inherit;
+  height: 5px;
+  border-bottom-color: #009900;
+  border-width: 0px;
+  border-bottom-width: 5px;
+  border-style: solid;
+}
+.bio-box.valid-link:after{
+  border-bottom-color: #990000;
+}
+.bio-box:hover{
+  border-bottom-color: #222222;
+  animation-name: hoveredBox;
+  animation-duration: 2s;
+}
+@keyframes hoveredBox{
+  0%:{
+    transform: scale(0.3);
+  }
+  100%{
+    transform: scale(4.0);
+  }
+}
+.bio-label{
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 5px;
+}
+.bio-text{
+  text-align: center;
+}
+.bio-text a{
+  color:black;
+}
+#bio-left{
+  float: left;
+}
+#bio-right{
+  float: right;
+}
+#introduction{
+  text-align: center;
+}

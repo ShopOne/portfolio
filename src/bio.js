@@ -1,5 +1,5 @@
 import React from 'react';
-import './content.css'
+import './bio.css';
 const bio =[
   {desc:"Name",text:"Koki Yamashita",url:null},
   {desc:"Univ",text:"Meiji Univ.",url:null},
@@ -17,16 +17,22 @@ class BioList extends React.Component{
       const descText=()=>{
         return(<a id={elm.desc} href={elm.url}>{elm.text}</a>)
       };
+      var className = "bio-box";
+      if(elm.url != null) className += " valid-link";
       return(
-        <div key={elm.desc}>
-          <p><label htmlFor={elm.desc}>{elm.desc}</label></p>
-          <p>{descText()}</p>
+        <div key={elm.desc} className={className}>
+          <p className="bio-label">
+            <label htmlFor={elm.desc}>{elm.desc}</label>
+          </p>
+          <p className="bio-text">
+          {descText()}
+          </p>
         </div>
       )
     })
     return(
       <div className="bio-list" id={this.props.id}>
-        {bioElements}
+      {bioElements}
       </div>
     )
   }
@@ -38,9 +44,9 @@ export default class Biography extends React.Component{
       bioContents[idx%2].push(elm);
     })
     return(
-      <div id="biography">
-        <BioList bios={bioContents[0]} id="left-bio"/>
-        <BioList bios={bioContents[1]} id="right-bio"/>
+      <div id="bio">
+        <BioList bios={bioContents[0]} id="bio-left"/>
+        <BioList bios={bioContents[1]} id="bio-right"/>
       </div>
     )
   }

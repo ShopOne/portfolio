@@ -1,4 +1,5 @@
 import React from 'react';
+import './skill.css';
 const skills =[
   {img: process.env.PUBLIC_URL+"/cpp.png",skillName:"C++",
    skillDesc: "競技プログラミングとゲーム制作に使用しています。"},
