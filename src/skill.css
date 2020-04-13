@@ -1,7 +1,6 @@
 .skill{
-  background: linear-gradient(#CCCCCC, #333333);
+  background: linear-gradient(#FFFFFF,#77CCFF);
   border: 4px solid #333333;
-  margin: 5px;
   margin-bottom: 3px;
   min-height: 100px;
   min-width: 1000px;
@@ -10,7 +9,7 @@
   animation-duration: 1s;
 }
 .skill:hover{
-  background: black;
+  background: #55AADD;
 }
 @keyframes skillFadeIn{
   0%{
@@ -34,12 +33,12 @@ li{
   float: left;
 }
 .skill-name{
-  color: #FFFFFF;
+  color: #223377;
   font-size: 40pt;
   margin-top: 25pt;
 }
 .skill-desc{
-  color: #FFFFFF;
+  color: #223377;
   font-size: 20pt;
 }
 .skill:after{
