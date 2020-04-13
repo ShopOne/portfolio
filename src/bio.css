@@ -1,12 +1,6 @@
 #bio{
-  min-width: 500px;
-  width: 700px;
-  padding-top: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 30px;
-  margin-left: 40px;
-  margin-top: 16px;
+  margin:auto;
+  display: flex;
 }
 #bio:after{
   content: ".";
@@ -15,10 +9,16 @@
   clear: both;
   visibility: hidden;
 }
+.bio-list-left{
+  margin: auto;
+  margin-right: 10px;
+}
+.bio-list-right{
+  margin: auto;
+  margin-left: 10px;
+}
 .bio-box{
-  width: 200px;
-  margin-bottom: 30px;
-  padding: 50px;
+  padding: 20px;
   background: linear-gradient(to right,#43FF6B, #FFFFFF);
   border-width: 4px;
   border-color: #000000;
@@ -37,7 +37,7 @@
 .bio-box:after{
   content: "";
   display: inline-block;
-  width: 200px;
+  min-width: 300px;
   height: 5px;
   border-bottom-color: #009900;
   border-width: 0px;
@@ -48,8 +48,8 @@
   border-bottom-color: #AA0000;
 }
 .bio-box:hover:after{
-  border-bottom-color: #EEEEEE;
   animation-name: hoveredBox;
+  animation-fill-mode: forwards;
   animation-duration: 2s;
 }
 @keyframes moveInBoxRight{
@@ -75,9 +75,11 @@
 @keyframes hoveredBox{
   0%{
     transform: scale(0.1);
+    border-bottom-color: #000000;
   }
   100%{
     transform: scale(1.0);
+    border-bottom-color: #66FFFF;
   }
 }
 .bio-label{
@@ -88,17 +90,12 @@
 }
 .bio-text{
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
+
 }
 .bio-text a{
   color:black;
   text-decoration: none;
-}
-#bio-left{
-  float: left;
-}
-#bio-right{
-  float: right;
 }
 #introduction{
   text-align: center;

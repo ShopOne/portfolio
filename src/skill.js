@@ -1,15 +1,5 @@
 import React from 'react';
 import './skill.css';
-const skills =[
-  {img: process.env.PUBLIC_URL+"/cpp.png",skillName:"C++",
-   skillDesc: "競技プログラミングとゲーム制作に使用しています。"},
-   {img: process.env.PUBLIC_URL+"/kotlin.png", skillName: "Kotlin",
-   skillDesc: "Androidアプリ開発に使用しています。"},
-   {img: process.env.PUBLIC_URL+"/java.png", skillName: "Java",
-     skillDesc: "授業とAndroidアプリ開発で使用しました。"},
-   {img: process.env.PUBLIC_URL+"/droid.png", skillName: "Android",
-     skillDesc: "アプリを1つリリースしています"},
-]
 export default class Skills extends React.Component{
   render(){
     var skillBody = skills.map((element)=>{
@@ -20,14 +10,26 @@ export default class Skills extends React.Component{
           alt={element.skillName}
           src={element.img}/>
         <ul className="skill-text">
-          <li className="skill-name">{element.skillName}</li>
+          <li className="skill-name" align="left">{element.skillName}</li>
           <li className="skill-desc">{element.skillDesc}</li>
         </ul>
       </li>
       )
     })
     return(
-      <ul>{skillBody}</ul>
+      <div id="skill-list" align="center">
+        <ul>{skillBody}</ul>
+      </div>
     )
   }
 }
+const skills =[
+  {img: process.env.PUBLIC_URL+"/cpp.png",skillName:"C++",
+   skillDesc: "競技プログラミングとゲーム制作に使用しています。"},
+   {img: process.env.PUBLIC_URL+"/kotlin.png", skillName: "Kotlin",
+   skillDesc: "Androidアプリ開発に使用しています。"},
+   {img: process.env.PUBLIC_URL+"/java.png", skillName: "Java",
+     skillDesc: "授業とAndroidアプリ開発で使用しました。"},
+   {img: process.env.PUBLIC_URL+"/droid.png", skillName: "Android",
+     skillDesc: "アプリを1つリリースしています"},
+]
