@@ -10,7 +10,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
-  "homepage": "http://shop_one.github.io/react-pages",
+  "homepage": "http://shopOne.github.io/react-pages",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
