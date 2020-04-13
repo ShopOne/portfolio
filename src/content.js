@@ -2,6 +2,7 @@ import React from 'react';
 import Skills from './skill.js'
 import Biography from './bio.js'
 import './content.css'
+import Selector from './selector.js'
 
 class Profile extends React.Component{
   constructor(props){
@@ -29,17 +30,9 @@ class Profile extends React.Component{
     }
     return(
       <div className="Profile">
-        <div id="selector">
-          <button type="text" 
-          value="Skill"
-          onClick = {this.onClickedHandler}
-          className ="profile-button">スキル</button>
-        <button type="text"
-        value="Biography"
-        onClick = {this.onClickedHandler}>プロフィール</button>
-    </div>
-    {componentChanger()}
-  </div>
+        <Selector func={this.onClickedHandler} />
+        {componentChanger()}
+      </div>
     )
   }
 }
