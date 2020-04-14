@@ -13,6 +13,7 @@ class Profile extends React.Component{
     this.onClickedHandler = this.onClickedHandler.bind(this);
   }
   onClickedHandler(e){
+    console.log(e.target);
     const clicked = e.target.value;
     this.setState({
       selected: clicked,
