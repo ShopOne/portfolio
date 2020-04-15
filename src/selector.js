@@ -35,8 +35,8 @@ export default class Selector extends React.Component{
   }
 }
 const selectorValues = [
+  {value: "Biography",id:"selector-bio",desc:"プロフィールとリンク"},
   {value: "Skill",id:"selector-skill",desc:"スキル"},
-  {value: "Biography",id:"selector-bio",desc:"経歴 リンク"},
   {value: "introduction",id:"selector-bio",desc:"自己紹介"},
   {value: "Game",id:"selector-game",desc:"Coming soon.."},
 ]
