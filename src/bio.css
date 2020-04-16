@@ -1,8 +1,10 @@
 #bio-lists{
   margin:auto;
   display: flex;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 50px;
+  min-width: 460px;
 }
 #bio-lists:after{
   content: ".";
@@ -13,16 +15,16 @@
 }
 .bio-list-left{
   margin: auto;
-  margin-right: 10px;
 }
 .bio-list-right{
   margin: auto;
-  margin-left: 10px;
 }
 .bio-box{
   padding: 20px;
   margin-top: 10px;
   background: linear-gradient(to right,#77CCFF, #FFFFFF);
+  width: 30vw;
+  min-width: 200px;
   border-width: 4px;
   border-color: #000000;
   border-style: solid;
@@ -42,7 +44,7 @@
 .bio-box:after{
   content: "";
   display: inline-block;
-  min-width: 300px;
+  width: 80%;
   height: 5px;
   border-width: 0px;
   border-bottom-width: 5px;
@@ -94,7 +96,7 @@
 }
 .bio-text{
   text-align: center;
-  font-size: 30px;
+  font-size: 130%;
 
 }
 .bio-text a{
@@ -106,7 +108,8 @@
 }
 .bio-otherlinks{
   padding: 0px;
-  width: 500px;
+  width: 90%;
+  max-width: 420px;
 }
 .bio-otherlink-box{
   width: inherit;

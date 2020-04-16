@@ -9,7 +9,7 @@ class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      selected: "",
+      selected: "Skill",
     }
     this.onClickedHandler = this.onClickedHandler.bind(this);
   }
