@@ -65,7 +65,7 @@ export default class Biography extends React.Component{
           <BioList bios={bioContents[0]} direction="left"/>
           <BioList bios={bioContents[1]} direction="right"/>
         </div>
-        <h1 className="introduction">Other Link</h1>
+        <h1 className="bio-otherlink-desc">Other Link</h1>
         <LinkList />
       </div>
     )

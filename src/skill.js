@@ -30,6 +30,10 @@ const skills =[
    skillDesc: "Androidアプリ開発に使用しています。"},
    {img: process.env.PUBLIC_URL+"/java.png", skillName: "Java",
      skillDesc: "授業とAndroidアプリ開発で使用しました。"},
+   {img: process.env.PUBLIC_URL+"/jvsc.png", skillName: "JavaScript",
+     skillDesc: "web制作の際に使用しています。"},
    {img: process.env.PUBLIC_URL+"/droid.png", skillName: "Android",
      skillDesc: "アプリを1つリリースしています"},
+   {img: process.env.PUBLIC_URL+"/react.png", skillName: "React",
+     skillDesc: "このサイトはReactを使用して作りました。"},
 ]

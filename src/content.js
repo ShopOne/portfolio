@@ -3,17 +3,17 @@ import Skills from './skill.js'
 import Biography from './bio.js'
 import './content.css'
 import Selector from './selector.js'
+import Description from './introduction.js'
 
 class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      selected: "Biography",
+      selected: "",
     }
     this.onClickedHandler = this.onClickedHandler.bind(this);
   }
   onClickedHandler(e){
-    console.log(e.target);
     const clicked = e.target.value;
     this.setState({
       selected: clicked,
@@ -21,12 +21,16 @@ class Profile extends React.Component{
   }
   render(){
     var componentChanger = () => {
+      console.log(this.state.selected);
       switch(this.state.selected){
         case "Skill": 
           return(<Skills />);
         case "Biography":
           return(<Biography />);
-        default: break;
+        case "Introduction":
+          return (<Description />);
+          default:
+          return(<div />);
       }
     }
     return(
