@@ -18,7 +18,7 @@ export default class Skills extends React.Component{
     })
     return(
       <div id="skill-list" align="center">
-        <ul>{skillBody}</ul>
+        <ul id="skill-list-ul">{skillBody}</ul>
       </div>
     )
   }

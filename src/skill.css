@@ -1,5 +1,8 @@
 #skill-list{
+  margin: auto;
   margin-top: 100px;
+  max-width: 600px;
+  min-width: 400px;
 }
 .skill{
   position: relative;
@@ -8,7 +11,7 @@
   margin-top: 20px;
   margin-bottom: 3px;
   height: 100px;
-  width: 900px;
+  width: 100%;
   animation-name: skillFadeIn;
   animation-duration: 1s;
 }
@@ -39,11 +42,12 @@ li{
 }
 .skill-name{
   color: #223377;
-  font-size: 40pt;
+  margin-bottom: 18px;
+  font-size: 30px;
 }
 .skill-desc{
   color: #223377;
-  font-size: 20pt;
+  font-size: 18px;
 }
 .skill:after{
   content: ".";
@@ -70,4 +74,8 @@ li{
   width: 100px;
   height: 100px;
   margin-left: 10px;
+}
+ul#skill-list-ul{
+  padding-left: 0;
+  padding-right: 3px;
 }
