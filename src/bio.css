@@ -24,7 +24,8 @@
   margin-top: 10px;
   background: linear-gradient(to right,#77CCFF, #FFFFFF);
   width: 30vw;
-  min-width: 200px;
+  min-width: 205px;
+  max-width: 300px;
   border-width: 4px;
   border-color: #000000;
   border-style: solid;
@@ -96,7 +97,7 @@
 }
 .bio-text{
   text-align: center;
-  font-size: 130%;
+  font-size: 120%;
 
 }
 .bio-text a{
