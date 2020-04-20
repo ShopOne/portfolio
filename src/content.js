@@ -4,12 +4,13 @@ import Biography from './bio.js'
 import './content.css'
 import Selector from './selector.js'
 import Description from './introduction.js'
+import GameMain from './game.js'
 
 class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      selected: "",
+      selected: "Game",
     }
     this.onClickedHandler = this.onClickedHandler.bind(this);
   }
@@ -29,6 +30,8 @@ class Profile extends React.Component{
           return(<Biography />);
         case "Introduction":
           return (<Description />);
+        case "Game":
+          return(<GameMain />);
           default:
           return(<div />);
       }
