@@ -5,10 +5,18 @@
   background: white;
   margin: 80px auto;
 }
+#Game-DrawHandler{
+  width: 100%;
+  height: 100%;
+}
 .Game-ball{
   position: absolute;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  background: black;
+}
+.Game-bar{
+  position: absolute;
   background: black;
 }
