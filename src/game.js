@@ -3,14 +3,31 @@ import './game.css'
 const MIN_X = 0,MAX_X = 700;
 const MIN_Y = 0,MAX_Y = 700;
 const BAR_MOVE_SPD = 5;
-const BALL_DEF_SPD = 5;
-const BALL_DIA = 30;
+const BALL_DEF_SPD_X = 1;
+const BALL_DEF_SPD_Y = 3;
+const BALL_DIA = 80;
+const BLOCK_ROW = 4;
+const BLOCK_COL = 6;
+
+var createInitBlock = () => {
+  var res = [];
+  for(var row=0;row<BLOCK_ROW;row++){
+    for(var col=0;col<BLOCK_COL;col++){
+      res.push({
+        posX: 120+col*80,
+        posY: 150+row*50,
+        width: 60,
+        height: 30,
+        exist: true,
+      })
+    }
+  }
+  return res;
+}
 function clampVal(x,low,high){
   if(x<low) return low;
   if(x>high) return high;
   return x;
-}
-class moveObject extends React.Component{
 }
 class DrawHandler extends React.Component{
   render(){
@@ -27,15 +44,35 @@ class DrawHandler extends React.Component{
         />
       )
     })
+    const blocks = this.props.blocks.map((block,idx)=>{
+      return(
+        <div className="Game-block"
+        key={idx}
+        style={{
+          left: block.posX+"px",
+          top: block.posY+"px",
+          width: block.width+"px",
+          height: block.height+"px",
+        }}
+        />
+      )
+    })
     return(
       <div id="Game-DrawHandler">
         <div className="Game-ball"
         style={{
-          left: this.props.ballPosX+"px",
-          bottom: this.props.ballPosY+"px",
+          left: this.props.ball.posX+"px",
+          bottom: this.props.ball.posY+"px",
+          width: BALL_DIA/2,
+          height: BALL_DIA/2,
         }}
         />
-        {bars}
+        <div id="Game-bars">
+          {bars}
+        </div>
+        <div id="Game-blocks">
+        {blocks}
+        </div>
       </div>
     )
   }
@@ -44,14 +81,14 @@ export default class GameMain extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      ballPosX: 40,
-      ballPosY: 20,
-      ballVX: 0.3,
-      ballVY: 1.0,
-      upKey: false,
-      downKey: false,
-      leftKey: false,
-      rightKey: false,
+      ball:{
+        posX: 40,
+        posY: 20,
+        vx: BALL_DEF_SPD_X,
+        vy: BALL_DEF_SPD_Y,
+      },
+      blocks:
+        createInitBlock(),
       bars:[
         {posX: 350,posY:  0,
           width: 200,height:  20,key: "top"},
@@ -133,11 +170,13 @@ export default class GameMain extends React.Component{
       rightKey: rightKey,
     })
   }
+  hitObject(ball,obj){
+  }
   moveBall(){
-    var nowX = this.state.ballPosX;
-    var nowY = this.state.ballPosY;
-    var vx = this.state.ballVX;
-    var vy = this.state.ballVY;
+    var nowX = this.state.ball.posX;
+    var nowY = this.state.ball.posY;
+    var vx = this.state.ball.vx;
+    var vy = this.state.ball.vy;
     var nextX = nowX + vx;
     var nextY = nowY + vy;
     if(nextX < MIN_X ||nextX > MAX_X){
@@ -150,10 +189,12 @@ export default class GameMain extends React.Component{
     nextX = clampVal(nextX,MIN_X,MAX_X);
     nextY = clampVal(nextY,MIN_Y,MAX_Y);
     this.setState({
-      ballPosX: nextX,
-      ballPosY: nextY,
-      ballVX: vx,
-      ballVY: vy,
+      ball:{
+        posX: nextX,
+        posY: nextY,
+        vx: vx,
+        vy: vy,
+      }
     })
   }
   moveObject(){
@@ -166,11 +207,17 @@ export default class GameMain extends React.Component{
       onKeyDown={(e)=>this.keyHandler(e,true)}
       onKeyUp={(e)=>this.keyHandler(e,false)}
       tabIndex='0'
+      style={{
+        width: MAX_X,
+        height: MAX_Y,
+        minWidth: MAX_X,
+        maxHeight: MAX_Y,
+      }}
       >
         <DrawHandler
-        ballPosX={this.state.ballPosX}
-        ballPosY={this.state.ballPosY}
+        ball={this.state.ball}
         bars={this.state.bars}
+        blocks={this.state.blocks}
         />
       </div>
     )
