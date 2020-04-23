@@ -9,6 +9,36 @@ const BALL_DIA = 80;
 const BLOCK_ROW = 4;
 const BLOCK_COL = 6;
 
+function absClossProduct(x1,y1,x2,y2){
+  return Math.abs(x1*y2 - y1*x2);
+}
+function dotProduct(x1,y1,x2,y2){
+  return x1*x2+y1*y2;
+}
+function square(x){
+  return x*x;
+}
+function clampVal(x,low,high){
+  if(x<low) return low;
+  if(x>high) return high;
+  return x;
+}
+function hitLine(ball,x1,y1,x2,y2){
+    const rad = ball.rad;
+    const bx = ball.posX+rad;
+    const by = ball.posY+rad;
+    if(rad>=absClossProduct(x2-x1,y2-y1,bx-x1,by-y1)/
+       Math.sqrt(square(x2-x1)+square(y2-y1))){
+      if(dotProduct(bx-x1,by-y1,x2-x1,y2-y1)*
+          dotProduct(bx-x2,by-y2,x2-x1,y2-y1)<=0){
+        return true;
+      }else if(square(rad) > square(bx-x1)+square(by-y1) ||
+             square(rad) > square(bx-x2)+square(by-y2)){
+        return true;
+      }
+    }
+    return false;
+  }
 var createInitBlock = () => {
   var res = [];
   for(var row=0;row<BLOCK_ROW;row++){
@@ -23,11 +53,6 @@ var createInitBlock = () => {
     }
   }
   return res;
-}
-function clampVal(x,low,high){
-  if(x<low) return low;
-  if(x>high) return high;
-  return x;
 }
 class DrawHandler extends React.Component{
   render(){
@@ -62,9 +87,10 @@ class DrawHandler extends React.Component{
         <div className="Game-ball"
         style={{
           left: this.props.ball.posX+"px",
-          bottom: this.props.ball.posY+"px",
+          top: this.props.ball.posY+"px",
           width: BALL_DIA/2,
           height: BALL_DIA/2,
+          rad: BALL_DIA/2,
         }}
         />
         <div id="Game-bars">
@@ -82,10 +108,11 @@ export default class GameMain extends React.Component{
     super(props);
     this.state = {
       ball:{
-        posX: 40,
-        posY: 20,
+        posX: 20,
+        posY: 380,
         vx: BALL_DEF_SPD_X,
         vy: BALL_DEF_SPD_Y,
+        rad: BALL_DIA/2,
       },
       blocks:
         createInitBlock(),
@@ -170,7 +197,26 @@ export default class GameMain extends React.Component{
       rightKey: rightKey,
     })
   }
-  hitObject(ball,obj){
+  ballHitObject(ball,obj){
+    const x1 = obj.posX;
+    const y1 = obj.posY;
+    const x2 = x1 + obj.width;
+    const y2 = y1 + obj.height;
+    var hit = "";
+
+    if(hitLine(ball,x1,y1,x2,y1)){
+      hit = "bottom";
+    } 
+    if(hitLine(ball,x1,y2,x2,y2)){
+      hit = "top";
+    }
+    if(hitLine(ball,x1,y1,x1,y2)){
+      hit = "left";
+    }
+    if(hitLine(ball,x2,y1,x2,y2)){
+      hit = "right";
+    }
+    return hit;
   }
   moveBall(){
     var nowX = this.state.ball.posX;
@@ -179,26 +225,43 @@ export default class GameMain extends React.Component{
     var vy = this.state.ball.vy;
     var nextX = nowX + vx;
     var nextY = nowY + vy;
-    if(nextX < MIN_X ||nextX > MAX_X){
-      vx = -vx;
-    }
-
-    if(nextY < MIN_Y ||nextY > MAX_Y){
-      vy = -vy;
-    }
-    nextX = clampVal(nextX,MIN_X,MAX_X);
-    nextY = clampVal(nextY,MIN_Y,MAX_Y);
-    this.setState({
-      ball:{
-        posX: nextX,
-        posY: nextY,
-        vx: vx,
-        vy: vy,
+    var blocks = this.state.blocks;
+    var hit = false;
+    var nextBall = this.state.ball;
+    nextBall.posX = nextX;
+    nextBall.posY = nextY;
+    blocks.forEach((block)=>{
+      const hitDir = this.ballHitObject(nextBall,block);
+      if(!hit){
+        if(hitDir==='right'||hitDir==='left'){
+          nextBall.posX = nowX;
+          nextBall.vx = -vx;
+          hit = true;
+        }
+        if(hitDir==='top'||hitDir==='bottom'){
+          nextBall.posY = nowY;
+          nextBall.vy = -vy;
+          hit = true;
+        }
       }
+    })
+    if(!hit){
+      if(nextX < MIN_X ||nextX > MAX_X){
+        nextBall.vx = -vx;
+      }
+
+      if(nextY < MIN_Y ||nextY > MAX_Y){
+        nextBall.vy = -vy;
+      }
+      nextBall.posX = clampVal(nextBall.posX,MIN_X,MAX_X);
+      nextBall.posY = clampVal(nextBall.posY,MIN_Y,MAX_Y);
+    }
+    this.setState({
+      ball: nextBall,
     })
   }
   moveObject(){
-    // this.moveBall();
+    this.moveBall();
     this.moveBar();
   }
   render(){
