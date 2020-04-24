@@ -38,5 +38,5 @@ const selectorValues = [
   {value: "Biography",id:"selector-bio",desc:"プロフィールとリンク"},
   {value: "Skill",id:"selector-skill",desc:"スキル"},
   {value: "Introduction",id:"selector-bio",desc:"自己紹介"},
-  {value: "Game",id:"selector-game",desc:"Comming soon.."},
+  {value: "Game",id:"selector-game",desc:"ゲーム"},
 ]
