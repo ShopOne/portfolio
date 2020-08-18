@@ -14,18 +14,19 @@
   visibility: hidden;
 }
 .bio-list-left{
+  width: 40%;
   margin: auto;
 }
 .bio-list-right{
+  width: 40%;
   margin: auto;
 }
 .bio-box{
   padding: 20px;
   margin-top: 10px;
   background: linear-gradient(to right,#77CCFF, #FFFFFF);
-  width: 30vw;
+  width: 80%;
   min-width: 205px;
-  max-width: 300px;
   border-width: 4px;
   border-color: #000000;
   border-style: solid;
@@ -36,11 +37,9 @@
 }
 .bio-box-left{
   animation-name: moveInBoxLeft;
-  margin-right: 20px;
 }
 .bio-box-right{
   animation-name: moveInBoxRight;
-  margin-left: 20px;
 }
 .bio-box:after{
   content: "";
@@ -109,13 +108,12 @@
 }
 .bio-otherlinks{
   padding: 0px;
-  width: 90%;
-  max-width: 420px;
+  width: 80%;
 }
 .bio-otherlink-box{
   width: inherit;
   height: 40px;
-  background: linear-gradient(to right,#77CCFF, #FFFFFF);
+  background: linear-gradient(to right,#66F23C, #FFFFFF);
   border-width: 4px;
   border-color: #000000;
   border-style: solid;

@@ -9,6 +9,7 @@ export default class Selector extends React.Component{
           <button 
           value={elms.value}
           id={elms.id}
+          align="center"
           className="selector-button"
           onClick = {this.props.func}>{elms.desc}</button>
         </li>
