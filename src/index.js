@@ -5,7 +5,7 @@ import './index.css'
 
 ReactDOM.render(
   <div className="body">
-  <MainContent/>
+    <MainContent/>
   </div>,
   document.getElementById('root')
 );
