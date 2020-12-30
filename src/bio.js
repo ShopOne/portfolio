@@ -89,4 +89,5 @@ const otherLink = [
     url:"https://play.google.com/store/apps/details?id=com.support.shirensupporter"},
   {desc:"Game(ゆるふわSTG)",url:"https://www.freem.ne.jp/win/game/19515"},
   {desc:"Game(hiyaya_ko)",url:"https://www.freem.ne.jp/win/game/22440"},
+  {desc:"Shitforces(クソなぞなぞコンテストサイト)", url:"https://shitforces.herokuapp.com/"}
 ]
